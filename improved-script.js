@@ -15,23 +15,27 @@ function playGame() {
   }
 
   function getHumanChoice() {
-    const userInput = prompt("Enter your choice (rock, paper, or scissors): ").toLowerCase();
+    const userInput = prompt(
+      "Enter your choice (rock, paper, or scissors): "
+    ).toLowerCase();
     return userInput;
   }
 
   function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
-      console.log("It's a draw!");
+      //   console.log("It's a draw!");
+      return;
     } else if (winningConditions[humanChoice] === computerChoice) {
       humanScore += 1;
-      console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+      //   console.log(`You win! ${humanChoice} beats ${computerChoice}`);
     } else {
       computerScore += 1;
-      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+      //   console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
     }
   }
 
-  while (true) {
+  let i = 0;
+  while (i < 5) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
 
@@ -42,10 +46,7 @@ function playGame() {
 
     playRound(humanSelection, computerSelection);
 
-    const playAgain = prompt("Do you want to play again? (yes/no): ").toLowerCase();
-    if (playAgain !== "yes") {
-      break;
-    }
+    i++;
   }
 
   if (humanScore > computerScore) {
